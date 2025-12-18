@@ -166,6 +166,11 @@ def main():
         text = args.string
     else:
         text = read_file(args.file)
+    
+    # Проверка на пустую строку или строку только с пробелами
+    if text is None or text == "" or text.isspace():
+        print("Ошибка: Строка для поиска пустая.")
+        sys.exit(1)
 
     # Подготавливаем паттерны
     patterns = args.patterns[0] if len(args.patterns) == 1 else args.patterns

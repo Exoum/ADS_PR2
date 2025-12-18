@@ -248,7 +248,7 @@ def search(string: str, sub_string: Union[str, List[str]],
     Returns:
         Кортеж индексов для одной подстроки или словарь для нескольких подстрок
     """
-    if not string:
+    if string is None:
         return None
 
     # Обработка регистра
@@ -256,7 +256,7 @@ def search(string: str, sub_string: Union[str, List[str]],
 
     # Обработка одной подстроки
     if isinstance(sub_string, str):
-        if not sub_string:
+        if sub_string is None or not sub_string:
             return None
 
         pattern = sub_string if case_sensitivity else sub_string.lower()
@@ -277,7 +277,7 @@ def search(string: str, sub_string: Union[str, List[str]],
 
     # Обработка множества подстрок
     if isinstance(sub_string, (list, tuple)):
-        if not sub_string:
+        if sub_string is None or not sub_string:
             return None
 
         patterns = [p if case_sensitivity else p.lower() for p in sub_string if p]
